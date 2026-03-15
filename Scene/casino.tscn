@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://di1yec14pbl4b"]
+
+[ext_resource type="PackedScene" uid="uid://coa133888fv5q" path="res://Scene/Character/bob.tscn" id="1_i6xay"]
+
+[node name="Casino" type="Node2D" unique_id=684717466]
+
+[node name="CharacterBody2D" parent="." unique_id=1962894978 instance=ExtResource("1_i6xay")]
+position = Vector2(58, 30)
+speed = 200.0
