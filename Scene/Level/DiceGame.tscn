@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://dov21rwfwn880"]
+
+[ext_resource type="Script" uid="uid://cbes14moyih1v" path="res://Scene/Level/dice_game_control.gd" id="1_00b0j"]
+[ext_resource type="Texture2D" uid="uid://2ttgr08ym6lx" path="res://Art/Background/DiceGameBackground.jpg" id="2_00b0j"]
+[ext_resource type="Texture2D" uid="uid://y6cw1q7y3n11" path="res://Art/icon/chip.png" id="3_t1u7t"]
+[ext_resource type="Texture2D" uid="uid://cnlujdfaty468" path="res://Art/icon/dice.png" id="4_32hms"]
+[ext_resource type="Script" uid="uid://bwl3gx3r6ws8n" path="res://Scene/points_label.gd" id="5_7l1qk"]
+[ext_resource type="Texture2D" uid="uid://0kl563s267it" path="res://Art/Charater/casino.png" id="6_ao423"]
+[ext_resource type="Texture2D" uid="uid://qs5s87e0a2c3" path="res://Art/icon/close.png" id="7_8qx36"]
+[ext_resource type="Texture2D" uid="uid://dbwpargmwwcbt" path="res://Art/icon/play.png" id="8_t1u7t"]
+[ext_resource type="Texture2D" uid="uid://rpohidurkd1i" path="res://Art/dice/dice1.png" id="9_t1u7t"]
+
+[sub_resource type="FontVariation" id="FontVariation_skey5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t1u7t"]
+radius = 13.600001
+height = 34.4
+
+[node name="DiceGame" type="Node2D" unique_id=551752617]
+
+[node name="DiceGameControl" type="Control" parent="." unique_id=286444742]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_00b0j")
+
+[node name="DiceGameBackground" type="Sprite2D" parent="DiceGameControl" unique_id=1425711443]
+position = Vector2(579, 324)
+scale = Vector2(1.1259766, 1.1529517)
+texture = ExtResource("2_00b0j")
+
+[node name="betInput" type="LineEdit" parent="DiceGameControl" unique_id=1991364070]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 301.0
+offset_right = 794.0
+offset_bottom = 369.0
+tooltip_text = "Enter the amount of points you want to gamble"
+placeholder_text = "Enter Bet Amount"
+alignment = 1
+caret_blink = true
+right_icon = ExtResource("3_t1u7t")
+
+[node name="roll" type="Button" parent="DiceGameControl" unique_id=2042912898]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 457.0
+offset_right = 795.0
+offset_bottom = 518.0
+disabled = true
+text = "ROLL DICE"
+icon = ExtResource("4_32hms")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="DiceGameControl" unique_id=526051633]
+
+[node name="PointsLabel" type="Label" parent="DiceGameControl/CanvasLayer" unique_id=1159880762]
+z_index = 10
+offset_left = 1021.0
+offset_top = 44.0
+offset_right = 1115.0
+offset_bottom = 67.0
+text = "Points: 1000"
+script = ExtResource("5_7l1qk")
+
+[node name="Casino" type="Sprite2D" parent="DiceGameControl/CanvasLayer" unique_id=1604433455]
+z_index = 5
+position = Vector2(1070, 57.000004)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_ao423")
+
+[node name="exit" type="Button" parent="DiceGameControl" unique_id=219527621]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 525.0
+offset_right = 801.0
+offset_bottom = 582.0
+text = "EXIT"
+icon = ExtResource("7_8qx36")
+
+[node name="result" type="Label" parent="DiceGameControl" unique_id=760063567]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 237.0
+offset_right = 880.0
+offset_bottom = 298.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_skey5")
+theme_override_font_sizes/font_size = 30
+text = "WELCOME!! Enter bet to play"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DiceGameControl/result" unique_id=458306958]
+position = Vector2(-1.199997, 6.7999954)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_t1u7t")
+
+[node name="play" type="Button" parent="DiceGameControl" unique_id=957202154]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 379.0
+offset_right = 793.0
+offset_bottom = 446.0
+text = "PLAY"
+icon = ExtResource("8_t1u7t")
+
+[node name="dice" type="TextureRect" parent="DiceGameControl" unique_id=535133104]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 358.0
+offset_right = 520.0
+offset_bottom = 552.0
+texture = ExtResource("9_t1u7t")
+expand_mode = 1
+
+[connection signal="pressed" from="DiceGameControl/roll" to="DiceGameControl" method="_on_roll_pressed"]
+[connection signal="pressed" from="DiceGameControl/exit" to="DiceGameControl" method="_on_exit_pressed"]
+[connection signal="pressed" from="DiceGameControl/play" to="DiceGameControl" method="_on_play_pressed"]
