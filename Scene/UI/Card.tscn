@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bcawt27lbbkqg"]
+
+[node name="Card" type="TextureRect" unique_id=127131078]
+custom_minimum_size = Vector2(120, 170)
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 4

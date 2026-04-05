@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dorjh3etgsdv" path="res://Art/Charater/Bob_16x16.png" id="1_102sn"]
 [ext_resource type="Script" uid="uid://csasxxg76kcpr" path="res://Scene/Character/bob.gd" id="1_j35sf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_102sn"]
-size = Vector2(7.3333335, 14)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j35sf"]
+radius = 2.7777777
+height = 12.444441
 
 [sub_resource type="Animation" id="Animation_2stj2"]
 length = 0.001
@@ -240,18 +241,20 @@ transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1962894978]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_j35sf")
+move_speed = 400.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=241470122]
-scale = Vector2(3, 3)
+position = Vector2(0.6666667, 7.3333335)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_102sn")
 hframes = 24
 vframes = 7
 frame = 48
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=329496676]
-position = Vector2(0.33333334, 25)
+position = Vector2(0.6666667, 27.333332)
 scale = Vector2(3, 3)
-shape = SubResource("RectangleShape2D_102sn")
+shape = SubResource("CapsuleShape2D_j35sf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2133635394]
 libraries/ = SubResource("AnimationLibrary_2stj2")

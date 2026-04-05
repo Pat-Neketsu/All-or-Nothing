@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://bmpjj26wviyjq"]
+
+[ext_resource type="Texture2D" uid="uid://c0ih30s2gevbt" path="res://Art/Background/BlackjackTableBackground.png" id="1_eum7q"]
+[ext_resource type="Script" uid="uid://bk3shhjek6gic" path="res://Scene/Level/blackjack_control.gd" id="1_t1uqj"]
+[ext_resource type="Texture2D" uid="uid://0kl563s267it" path="res://Art/Charater/casino.png" id="2_t1uqj"]
+[ext_resource type="Script" uid="uid://bwl3gx3r6ws8n" path="res://Scene/points_label.gd" id="3_wrtmi"]
+[ext_resource type="Texture2D" uid="uid://y6cw1q7y3n11" path="res://Art/icon/chip.png" id="4_axu15"]
+[ext_resource type="Texture2D" uid="uid://choia68uf1d8n" path="res://Art/icon/Deal.png" id="5_hl276"]
+[ext_resource type="Texture2D" uid="uid://brx2dnkdksmvk" path="res://Art/icon/Stand.png" id="6_3e580"]
+[ext_resource type="Texture2D" uid="uid://qs5s87e0a2c3" path="res://Art/icon/close.png" id="7_j7gxx"]
+
+[node name="Blackjack" type="Node2D" unique_id=2126506361]
+
+[node name="BlackjackControl" type="Control" parent="." unique_id=1630479741]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_t1uqj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="BlackjackControl" unique_id=368102724]
+
+[node name="BlackjackTableBackground" type="Sprite2D" parent="BlackjackControl/CanvasLayer" unique_id=1350678345]
+position = Vector2(639.49994, 361)
+scale = Vector2(0.9268115, 0.9574468)
+texture = ExtResource("1_eum7q")
+
+[node name="PointsBackground" type="Sprite2D" parent="BlackjackControl/CanvasLayer" unique_id=1216685079]
+z_index = 5
+position = Vector2(1149, 81)
+scale = Vector2(0.25, 0.227)
+texture = ExtResource("2_t1uqj")
+
+[node name="PointsLabel" type="Label" parent="BlackjackControl/CanvasLayer" unique_id=770664254]
+z_index = 10
+offset_left = 1078.0
+offset_top = 62.0
+offset_right = 1224.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 25
+text = "Points: 1000"
+script = ExtResource("3_wrtmi")
+
+[node name="DealerArea" type="VBoxContainer" parent="BlackjackControl/CanvasLayer" unique_id=1917059151]
+offset_left = 3.0
+offset_top = 262.0
+offset_right = 365.0
+offset_bottom = 516.0
+
+[node name="DealerLabel" type="Label" parent="BlackjackControl/CanvasLayer/DealerArea" unique_id=11474890]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Dealer"
+horizontal_alignment = 1
+
+[node name="DealerCards" type="HBoxContainer" parent="BlackjackControl/CanvasLayer/DealerArea" unique_id=686775558]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="DealerScore" type="Label" parent="BlackjackControl/CanvasLayer/DealerArea" unique_id=474969920]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="BlackjackControl/CanvasLayer" unique_id=1005564968]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Player Area" type="VBoxContainer" parent="BlackjackControl/CanvasLayer" unique_id=1557433466]
+offset_left = 844.0
+offset_top = 269.0
+offset_right = 1248.0
+offset_bottom = 720.0
+
+[node name="PlayerLabel" type="Label" parent="BlackjackControl/CanvasLayer/Player Area" unique_id=1469789169]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Player"
+horizontal_alignment = 1
+
+[node name="PlayerCards" type="HBoxContainer" parent="BlackjackControl/CanvasLayer/Player Area" unique_id=479591759]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlayerScore" type="Label" parent="BlackjackControl/CanvasLayer/Player Area" unique_id=1893283246]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="UIControls" type="VBoxContainer" parent="BlackjackControl/CanvasLayer" unique_id=409635152]
+offset_left = 436.0
+offset_top = 545.0
+offset_right = 850.0
+offset_bottom = 716.0
+
+[node name="betInput" type="LineEdit" parent="BlackjackControl/CanvasLayer/UIControls" unique_id=279925890]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Enter the amount of points you want to gamble"
+placeholder_text = "Enter Bet Amount"
+alignment = 1
+caret_blink = true
+right_icon = ExtResource("4_axu15")
+
+[node name="ButtonRow" type="HBoxContainer" parent="BlackjackControl/CanvasLayer/UIControls" unique_id=825144093]
+layout_mode = 2
+alignment = 1
+
+[node name="DealButton" type="Button" parent="BlackjackControl/CanvasLayer/UIControls/ButtonRow" unique_id=1765725757]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Deal"
+icon = ExtResource("4_axu15")
+
+[node name="HitButton" type="Button" parent="BlackjackControl/CanvasLayer/UIControls/ButtonRow" unique_id=1690422642]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Hit"
+icon = ExtResource("5_hl276")
+
+[node name="StandButton" type="Button" parent="BlackjackControl/CanvasLayer/UIControls/ButtonRow" unique_id=213256861]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Stand"
+icon = ExtResource("6_3e580")
+
+[node name="exit" type="Button" parent="BlackjackControl/CanvasLayer/UIControls/ButtonRow" unique_id=196379450]
+unique_name_in_owner = true
+layout_mode = 2
+text = "EXIT"
+icon = ExtResource("7_j7gxx")
+
+[node name="exit" type="Button" parent="BlackjackControl/CanvasLayer/UIControls/ButtonRow/exit" unique_id=506754432]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 634.0
+offset_right = 800.0
+offset_bottom = 703.0
+text = "EXIT"
+icon = ExtResource("7_j7gxx")
+
+[node name="ResultLabel" type="Label" parent="BlackjackControl/CanvasLayer/UIControls" unique_id=1174183200]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enter A Bet and Press Deal to Start!!!"
+
+[connection signal="pressed" from="BlackjackControl/CanvasLayer/UIControls/ButtonRow/DealButton" to="BlackjackControl" method="_on_deal_button_pressed"]
+[connection signal="pressed" from="BlackjackControl/CanvasLayer/UIControls/ButtonRow/HitButton" to="BlackjackControl" method="_on_hit_button_pressed"]
+[connection signal="pressed" from="BlackjackControl/CanvasLayer/UIControls/ButtonRow/StandButton" to="BlackjackControl" method="_on_stand_button_pressed"]
+[connection signal="pressed" from="BlackjackControl/CanvasLayer/UIControls/ButtonRow/exit" to="BlackjackControl" method="_on_exit_pressed"]

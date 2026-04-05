@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://dpixeh432k11v"]
+
+[ext_resource type="Script" uid="uid://4twp8858feqr" path="res://Scene/Level/slot_machine_control.gd" id="1_xxn7f"]
+[ext_resource type="Texture2D" uid="uid://dyt2lgrtrdrna" path="res://Art/Background/SlotMachineBackground.png" id="2_q88k0"]
+[ext_resource type="Texture2D" uid="uid://0kl563s267it" path="res://Art/Charater/casino.png" id="3_5fkj6"]
+[ext_resource type="Script" uid="uid://bwl3gx3r6ws8n" path="res://Scene/points_label.gd" id="4_5p154"]
+[ext_resource type="Texture2D" uid="uid://dirjs565m66mu" path="res://Art/slot/diamond.png" id="5_1ua7m"]
+[ext_resource type="Texture2D" uid="uid://qurl2gub7uyf" path="res://Art/slot/seven.png" id="6_m55v8"]
+[ext_resource type="Texture2D" uid="uid://y6cw1q7y3n11" path="res://Art/icon/chip.png" id="7_qnm61"]
+[ext_resource type="Texture2D" uid="uid://dusjf6gbrmbbu" path="res://Art/icon/joystick.png" id="8_gf11h"]
+[ext_resource type="Texture2D" uid="uid://qs5s87e0a2c3" path="res://Art/icon/close.png" id="9_fodwy"]
+[ext_resource type="Texture2D" uid="uid://c06vuu65f74kf" path="res://Art/Background/Winner.png" id="10_5b8lc"]
+
+[sub_resource type="FontVariation" id="FontVariation_3nmgr"]
+
+[node name="SlotMachine" type="Node2D" unique_id=142398486]
+
+[node name="SlotMachineControl" type="Control" parent="." unique_id=525838370]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xxn7f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SlotMachineControl" unique_id=1891671144]
+
+[node name="SlotMachineBackground" type="Sprite2D" parent="SlotMachineControl/CanvasLayer" unique_id=1004018198]
+position = Vector2(640.00006, 360.5)
+scale = Vector2(0.926087, 0.95611703)
+texture = ExtResource("2_q88k0")
+
+[node name="PointsBackground" type="Sprite2D" parent="SlotMachineControl/CanvasLayer" unique_id=539044078]
+z_index = 5
+position = Vector2(1149, 81)
+scale = Vector2(0.25, 0.227)
+texture = ExtResource("3_5fkj6")
+
+[node name="PointsLabel" type="Label" parent="SlotMachineControl/CanvasLayer" unique_id=997104979]
+z_index = 10
+offset_left = 1078.0
+offset_top = 62.0
+offset_right = 1224.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 25
+text = "Points: 1000"
+script = ExtResource("4_5p154")
+
+[node name="Slot1" type="TextureRect" parent="SlotMachineControl/CanvasLayer" unique_id=519268580]
+unique_name_in_owner = true
+offset_left = 376.0
+offset_top = 276.0
+offset_right = 526.0
+offset_bottom = 426.0
+texture = ExtResource("5_1ua7m")
+expand_mode = 1
+
+[node name="Slot2" type="TextureRect" parent="SlotMachineControl/CanvasLayer" unique_id=2004606650]
+unique_name_in_owner = true
+offset_left = 580.0
+offset_top = 276.0
+offset_right = 730.0
+offset_bottom = 426.0
+texture = ExtResource("6_m55v8")
+expand_mode = 1
+
+[node name="Slot3" type="TextureRect" parent="SlotMachineControl/CanvasLayer" unique_id=2099406638]
+unique_name_in_owner = true
+offset_left = 789.0
+offset_top = 275.0
+offset_right = 939.0
+offset_bottom = 425.0
+texture = ExtResource("5_1ua7m")
+expand_mode = 1
+
+[node name="betInput" type="LineEdit" parent="SlotMachineControl/CanvasLayer" unique_id=1087058410]
+unique_name_in_owner = true
+offset_left = 520.0
+offset_top = 458.0
+offset_right = 800.0
+offset_bottom = 526.0
+tooltip_text = "Enter the amount of points you want to gamble"
+placeholder_text = "Enter Bet Amount"
+alignment = 1
+caret_blink = true
+right_icon = ExtResource("7_qnm61")
+
+[node name="spin" type="Button" parent="SlotMachineControl/CanvasLayer" unique_id=335268929]
+unique_name_in_owner = true
+offset_left = 520.0
+offset_top = 546.0
+offset_right = 800.0
+offset_bottom = 616.0
+text = "PULL SLOT"
+icon = ExtResource("8_gf11h")
+
+[node name="exit" type="Button" parent="SlotMachineControl/CanvasLayer" unique_id=771046694]
+unique_name_in_owner = true
+offset_left = 520.0
+offset_top = 634.0
+offset_right = 800.0
+offset_bottom = 703.0
+text = "EXIT"
+icon = ExtResource("9_fodwy")
+
+[node name="result" type="Label" parent="SlotMachineControl/CanvasLayer" unique_id=816602787]
+unique_name_in_owner = true
+offset_left = 167.0
+offset_top = 492.0
+offset_right = 506.0
+offset_bottom = 651.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_3nmgr")
+theme_override_font_sizes/font_size = 30
+text = "WELCOME!! Enter bet to play!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="Winner" type="Sprite2D" parent="SlotMachineControl/CanvasLayer" unique_id=471687397]
+position = Vector2(903.40625, 582.43756)
+scale = Vector2(0.10050322, 0.09208529)
+texture = ExtResource("10_5b8lc")
+
+[connection signal="pressed" from="SlotMachineControl/CanvasLayer/spin" to="SlotMachineControl" method="_on_spin_pressed"]
+[connection signal="pressed" from="SlotMachineControl/CanvasLayer/exit" to="SlotMachineControl" method="_on_exit_pressed"]
