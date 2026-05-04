@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://b2tgrsgkid356"]
+
+[ext_resource type="Script" uid="uid://dkme8tshsfx1" path="res://roc.gd" id="1_1ppnt"]
+[ext_resource type="Texture2D" uid="uid://c8d0rs1pn5rq0" path="res://Art/Background/RiseIOrCrashBackground.jpg" id="2_pgcao"]
+[ext_resource type="Texture2D" uid="uid://cmn6pl5tef76g" path="res://Art/Chips/ChipBlank.png" id="3_nw6b2"]
+[ext_resource type="Script" uid="uid://bwl3gx3r6ws8n" path="res://Scene/points_label.gd" id="4_813r0"]
+[ext_resource type="Texture2D" uid="uid://dbwpargmwwcbt" path="res://Art/icon/play.png" id="5_3qp7x"]
+[ext_resource type="Texture2D" uid="uid://y6cw1q7y3n11" path="res://Art/icon/chip.png" id="6_uj1nw"]
+[ext_resource type="Texture2D" uid="uid://qs5s87e0a2c3" path="res://Art/icon/close.png" id="7_kiuwe"]
+
+[node name="ROC" type="Node2D" unique_id=1394535821]
+script = ExtResource("1_1ppnt")
+
+[node name="ROCControl" type="Control" parent="." unique_id=1070798122]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ROCControl" unique_id=1352940010]
+
+[node name="Background" type="TextureRect" parent="ROCControl/CanvasLayer" unique_id=1891012420]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pgcao")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PointsBackground" type="TextureRect" parent="ROCControl/CanvasLayer" unique_id=1651458813]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 250.0
+grow_horizontal = 0
+texture = ExtResource("3_nw6b2")
+expand_mode = 1
+
+[node name="PointsLabel" type="Label" parent="ROCControl/CanvasLayer" unique_id=163494766]
+z_index = 10
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -186.0
+offset_top = 72.0
+offset_right = -40.0
+offset_bottom = 141.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+script = ExtResource("4_813r0")
+
+[node name="Grid" type="Node2D" parent="ROCControl/CanvasLayer" unique_id=289549192]
+unique_name_in_owner = true
+position = Vector2(119, 265)
+
+[node name="UI" type="VBoxContainer" parent="ROCControl/CanvasLayer" unique_id=820373115]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -648.0
+offset_top = -395.0
+offset_right = -48.0
+offset_bottom = -65.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="ROCControl/CanvasLayer/UI" unique_id=2080634569]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Start"
+icon = ExtResource("5_3qp7x")
+
+[node name="BetInput" type="LineEdit" parent="ROCControl/CanvasLayer/UI" unique_id=578953764]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Place Your Bet"
+alignment = 1
+right_icon = ExtResource("6_uj1nw")
+
+[node name="CashOutButton" type="Button" parent="ROCControl/CanvasLayer/UI" unique_id=1445564448]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Cash Out"
+icon = ExtResource("6_uj1nw")
+
+[node name="MultiplierLabel" type="Label" parent="ROCControl/CanvasLayer/UI" unique_id=1907075317]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Multiplier : 1.0x"
+horizontal_alignment = 1
+
+[node name="ResultLabel" type="Label" parent="ROCControl/CanvasLayer/UI" unique_id=207441342]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Start To Play"
+horizontal_alignment = 1
+
+[node name="Exit" type="Button" parent="ROCControl/CanvasLayer/UI" unique_id=117818616]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+icon = ExtResource("7_kiuwe")
+
+[connection signal="pressed" from="ROCControl/CanvasLayer/UI/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ROCControl/CanvasLayer/UI/CashOutButton" to="." method="_on_cash_out_button_pressed"]
+[connection signal="pressed" from="ROCControl/CanvasLayer/UI/Exit" to="." method="_on_exit_pressed"]

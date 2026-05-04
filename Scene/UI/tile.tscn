@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bxafu4qto0020"]
+
+[ext_resource type="Texture2D" uid="uid://co0wfnwdspc1n" path="res://Art/RiseOrCrash/ROCBack.png" id="1_j1ffy"]
+[ext_resource type="Script" uid="uid://cdcbguriq1s3u" path="res://Scene/UI/tile.gd" id="1_veoxa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_veoxa"]
+size = Vector2(93, 93)
+
+[node name="Tile" type="Area2D" unique_id=1710069516]
+script = ExtResource("1_veoxa")
+
+[node name="icon" type="Sprite2D" parent="." unique_id=551961490]
+unique_name_in_owner = true
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("1_j1ffy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1130498796]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_veoxa")

@@ -1,0 +1,623 @@
+[gd_scene format=3 uid="uid://bjxspm0dixswk"]
+
+[ext_resource type="Script" uid="uid://db7jtwjiqvgkm" path="res://Scene/Level/roulette.gd" id="1_lc1kl"]
+[ext_resource type="Texture2D" uid="uid://dayqghb1cr8dv" path="res://Art/Background/RoutletteBackground.png" id="2_o5oxm"]
+[ext_resource type="Texture2D" uid="uid://cmn6pl5tef76g" path="res://Art/Chips/ChipBlank.png" id="3_icgd4"]
+[ext_resource type="Script" uid="uid://bwl3gx3r6ws8n" path="res://Scene/points_label.gd" id="4_quhn8"]
+[ext_resource type="Texture2D" uid="uid://b7vogs1ttj02f" path="res://Art/roulette/wheel.png" id="5_bkcjn"]
+[ext_resource type="Texture2D" uid="uid://ddr7x1nlgm81j" path="res://Art/roulette/ball.png" id="6_gi5vy"]
+[ext_resource type="Texture2D" uid="uid://dleo7w3jt7yyy" path="res://Art/roulette/bettingBoard.png" id="7_tgspb"]
+[ext_resource type="Script" uid="uid://bj84pnmsvlx1m" path="res://Scene/Level/bet_0.gd" id="8_o5oxm"]
+[ext_resource type="Texture2D" uid="uid://cdqex6ivrowv5" path="res://Art/Chips/ChipRed.png" id="9_gi5vy"]
+[ext_resource type="Texture2D" uid="uid://bmowkolklfiad" path="res://Art/Chips/ChipBlue.png" id="9_icgd4"]
+[ext_resource type="Texture2D" uid="uid://dcu1cm05t8xhd" path="res://Art/Chips/ChipGreen.png" id="11_tgspb"]
+[ext_resource type="Texture2D" uid="uid://c3ymlkfocolug" path="res://Art/Chips/ChipBlack.png" id="12_705pj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_icgd4"]
+radius = 20.0
+height = 64.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gi5vy"]
+radius = 19.0
+height = 177.98999
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tgspb"]
+radius = 21.0
+height = 84.0
+
+[node name="Roulette" type="Node2D" unique_id=1235980898]
+script = ExtResource("1_lc1kl")
+
+[node name="rouletteControl" type="Control" parent="." unique_id=1271689440]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="rouletteControl" unique_id=1520545162]
+
+[node name="Background" type="TextureRect" parent="rouletteControl/CanvasLayer" unique_id=588487191]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o5oxm")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PointsBackground" type="TextureRect" parent="rouletteControl/CanvasLayer" unique_id=1340467972]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 250.0
+grow_horizontal = 0
+texture = ExtResource("3_icgd4")
+expand_mode = 1
+
+[node name="PointsLabel" type="Label" parent="rouletteControl/CanvasLayer" unique_id=1681611341]
+z_index = 10
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -186.0
+offset_top = 72.0
+offset_right = -40.0
+offset_bottom = 141.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+script = ExtResource("4_quhn8")
+
+[node name="WheelArea" type="Node2D" parent="rouletteControl/CanvasLayer" unique_id=302678261]
+
+[node name="Wheel" type="Sprite2D" parent="rouletteControl/CanvasLayer/WheelArea" unique_id=1769610964]
+unique_name_in_owner = true
+position = Vector2(317, 485)
+scale = Vector2(0.5, 0.497)
+texture = ExtResource("5_bkcjn")
+
+[node name="Ball" type="Sprite2D" parent="rouletteControl/CanvasLayer/WheelArea/Wheel" unique_id=17611738]
+unique_name_in_owner = true
+position = Vector2(-9.9999695, -374.24545)
+scale = Vector2(0.06999999, 0.07042253)
+texture = ExtResource("6_gi5vy")
+
+[node name="BoardArea" type="Node2D" parent="rouletteControl/CanvasLayer" unique_id=1362633262]
+
+[node name="BettingBoard" type="Sprite2D" parent="rouletteControl/CanvasLayer/BoardArea" unique_id=671861729]
+position = Vector2(864.00006, 398.00003)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("7_tgspb")
+
+[node name="BetZones" type="Node2D" parent="rouletteControl/CanvasLayer/BoardArea" unique_id=1978196666]
+unique_name_in_owner = true
+
+[node name="bet0" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1997690134]
+unique_name_in_owner = true
+position = Vector2(545, 349)
+script = ExtResource("8_o5oxm")
+value = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet0" unique_id=1173995205]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet1" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=546649543]
+unique_name_in_owner = true
+position = Vector2(608, 419)
+script = ExtResource("8_o5oxm")
+value = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet1" unique_id=812907824]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet2" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=536547688]
+unique_name_in_owner = true
+position = Vector2(608, 349)
+script = ExtResource("8_o5oxm")
+value = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet2" unique_id=438087872]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet3" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1709430710]
+unique_name_in_owner = true
+position = Vector2(607, 278)
+script = ExtResource("8_o5oxm")
+value = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet3" unique_id=1206011769]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet4" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1542615346]
+unique_name_in_owner = true
+position = Vector2(657, 420)
+script = ExtResource("8_o5oxm")
+value = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet4" unique_id=210701176]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet5" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=317717983]
+unique_name_in_owner = true
+position = Vector2(657, 349)
+script = ExtResource("8_o5oxm")
+value = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet5" unique_id=479084555]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet6" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=820032788]
+unique_name_in_owner = true
+position = Vector2(657, 277)
+script = ExtResource("8_o5oxm")
+value = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet6" unique_id=902252925]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet7" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1383327569]
+unique_name_in_owner = true
+position = Vector2(706, 420)
+script = ExtResource("8_o5oxm")
+value = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet7" unique_id=964349608]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet8" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1987151305]
+unique_name_in_owner = true
+position = Vector2(705, 348)
+script = ExtResource("8_o5oxm")
+value = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet8" unique_id=1836890799]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet9" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=517951896]
+unique_name_in_owner = true
+position = Vector2(706, 278)
+script = ExtResource("8_o5oxm")
+value = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet9" unique_id=1622755722]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet10" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1442983340]
+unique_name_in_owner = true
+position = Vector2(755, 420)
+script = ExtResource("8_o5oxm")
+value = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet10" unique_id=333352021]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet11" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1281255255]
+unique_name_in_owner = true
+position = Vector2(755, 349)
+script = ExtResource("8_o5oxm")
+value = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet11" unique_id=1068957496]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet12" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1168198600]
+unique_name_in_owner = true
+position = Vector2(754, 278)
+script = ExtResource("8_o5oxm")
+value = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet12" unique_id=1984384924]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet13" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1307390935]
+unique_name_in_owner = true
+position = Vector2(804, 419)
+script = ExtResource("8_o5oxm")
+value = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet13" unique_id=1157985382]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet14" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=180980684]
+unique_name_in_owner = true
+position = Vector2(803, 348)
+script = ExtResource("8_o5oxm")
+value = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet14" unique_id=1043529460]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet15" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=652875352]
+unique_name_in_owner = true
+position = Vector2(804, 278)
+script = ExtResource("8_o5oxm")
+value = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet15" unique_id=844974521]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet16" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1295424475]
+unique_name_in_owner = true
+position = Vector2(852, 421)
+script = ExtResource("8_o5oxm")
+value = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet16" unique_id=28420450]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet17" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=16820775]
+unique_name_in_owner = true
+position = Vector2(853, 348)
+script = ExtResource("8_o5oxm")
+value = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet17" unique_id=760248657]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet18" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=636594799]
+unique_name_in_owner = true
+position = Vector2(853, 278)
+script = ExtResource("8_o5oxm")
+value = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet18" unique_id=1812586158]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet19" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=321122674]
+unique_name_in_owner = true
+position = Vector2(902, 420)
+script = ExtResource("8_o5oxm")
+value = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet19" unique_id=452942542]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet20" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=416514180]
+unique_name_in_owner = true
+position = Vector2(901, 349)
+script = ExtResource("8_o5oxm")
+value = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet20" unique_id=1876951458]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet21" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=346839025]
+unique_name_in_owner = true
+position = Vector2(901, 276)
+script = ExtResource("8_o5oxm")
+value = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet21" unique_id=2067940158]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet22" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1553196091]
+unique_name_in_owner = true
+position = Vector2(951, 421)
+script = ExtResource("8_o5oxm")
+value = 22
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet22" unique_id=1268796171]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet23" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1042147589]
+unique_name_in_owner = true
+position = Vector2(950, 350)
+script = ExtResource("8_o5oxm")
+value = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet23" unique_id=1307475489]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet24" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=2040264551]
+unique_name_in_owner = true
+position = Vector2(950, 277)
+script = ExtResource("8_o5oxm")
+value = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet24" unique_id=1782722672]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet25" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1192155613]
+unique_name_in_owner = true
+position = Vector2(1000, 419)
+script = ExtResource("8_o5oxm")
+value = 25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet25" unique_id=1999867794]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet26" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=810869788]
+unique_name_in_owner = true
+position = Vector2(998, 347)
+script = ExtResource("8_o5oxm")
+value = 26
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet26" unique_id=2042836785]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet27" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=729513539]
+unique_name_in_owner = true
+position = Vector2(1000, 279)
+script = ExtResource("8_o5oxm")
+value = 27
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet27" unique_id=254169198]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet28" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=865165918]
+unique_name_in_owner = true
+position = Vector2(1048, 421)
+script = ExtResource("8_o5oxm")
+value = 28
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet28" unique_id=1564956700]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet29" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1757888061]
+unique_name_in_owner = true
+position = Vector2(1048, 350)
+script = ExtResource("8_o5oxm")
+value = 29
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet29" unique_id=998131597]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet30" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1040800358]
+unique_name_in_owner = true
+position = Vector2(1048, 276)
+script = ExtResource("8_o5oxm")
+value = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet30" unique_id=1535446165]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet31" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=2033051887]
+unique_name_in_owner = true
+position = Vector2(1098, 419)
+script = ExtResource("8_o5oxm")
+value = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet31" unique_id=2003967819]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet32" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=513779549]
+unique_name_in_owner = true
+position = Vector2(1097, 349)
+script = ExtResource("8_o5oxm")
+value = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet32" unique_id=1157660832]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet33" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=953499512]
+unique_name_in_owner = true
+position = Vector2(1098, 279)
+script = ExtResource("8_o5oxm")
+value = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet33" unique_id=1282287706]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet34" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=173876430]
+unique_name_in_owner = true
+position = Vector2(1144, 419)
+script = ExtResource("8_o5oxm")
+value = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet34" unique_id=1112646051]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet35" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=76026057]
+unique_name_in_owner = true
+position = Vector2(1146, 349)
+script = ExtResource("8_o5oxm")
+value = 35
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet35" unique_id=1434121953]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="bet36" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=289212933]
+unique_name_in_owner = true
+position = Vector2(1146, 278)
+script = ExtResource("8_o5oxm")
+value = 36
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/bet36" unique_id=575742231]
+shape = SubResource("CapsuleShape2D_icgd4")
+
+[node name="Dozen1" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1314002082]
+unique_name_in_owner = true
+position = Vector2(670, 480)
+script = ExtResource("8_o5oxm")
+bet_type = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/Dozen1" unique_id=1595422209]
+position = Vector2(17, 0)
+rotation = 1.5731748
+shape = SubResource("CapsuleShape2D_gi5vy")
+
+[node name="Dozen2" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1934933974]
+unique_name_in_owner = true
+position = Vector2(863, 479)
+script = ExtResource("8_o5oxm")
+bet_type = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/Dozen2" unique_id=683463560]
+position = Vector2(17, 0)
+rotation = 1.5731748
+shape = SubResource("CapsuleShape2D_gi5vy")
+
+[node name="Dozen3" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=693176238]
+unique_name_in_owner = true
+position = Vector2(1055, 480)
+script = ExtResource("8_o5oxm")
+bet_type = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/Dozen3" unique_id=1187590527]
+position = Vector2(17, 0)
+rotation = 1.5731748
+shape = SubResource("CapsuleShape2D_gi5vy")
+
+[node name="Low" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=915151017]
+unique_name_in_owner = true
+position = Vector2(614, 528)
+script = ExtResource("8_o5oxm")
+bet_type = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/Low" unique_id=1417214023]
+position = Vector2(19, 1)
+rotation = 1.5610332
+shape = SubResource("CapsuleShape2D_tgspb")
+
+[node name="High" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1736868802]
+unique_name_in_owner = true
+position = Vector2(1104, 529)
+script = ExtResource("8_o5oxm")
+bet_type = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/High" unique_id=2137836486]
+position = Vector2(19, 1)
+rotation = 1.5610332
+shape = SubResource("CapsuleShape2D_tgspb")
+
+[node name="Even" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1191139036]
+unique_name_in_owner = true
+position = Vector2(708, 528)
+script = ExtResource("8_o5oxm")
+bet_type = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/Even" unique_id=1788544448]
+position = Vector2(19, 1)
+rotation = 1.5610332
+shape = SubResource("CapsuleShape2D_tgspb")
+
+[node name="Odd" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1821986617]
+unique_name_in_owner = true
+position = Vector2(1006, 529)
+script = ExtResource("8_o5oxm")
+bet_type = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/Odd" unique_id=1188912063]
+position = Vector2(19, 1)
+rotation = 1.5610332
+shape = SubResource("CapsuleShape2D_tgspb")
+
+[node name="Red" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1241535587]
+unique_name_in_owner = true
+position = Vector2(808, 529)
+script = ExtResource("8_o5oxm")
+bet_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/Red" unique_id=233354505]
+position = Vector2(19, 1)
+rotation = 1.5610332
+shape = SubResource("CapsuleShape2D_tgspb")
+
+[node name="Black" type="Area2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones" unique_id=1147728683]
+unique_name_in_owner = true
+position = Vector2(907, 528)
+script = ExtResource("8_o5oxm")
+bet_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rouletteControl/CanvasLayer/BoardArea/BetZones/Black" unique_id=241998446]
+position = Vector2(19, 1)
+rotation = 1.5610332
+shape = SubResource("CapsuleShape2D_tgspb")
+
+[node name="ChipArea" type="Node2D" parent="rouletteControl/CanvasLayer/BoardArea" unique_id=294250768]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="rouletteControl/CanvasLayer" unique_id=841718326]
+
+[node name="BetLabel" type="Label" parent="rouletteControl/CanvasLayer/CanvasLayer" unique_id=647588880]
+unique_name_in_owner = true
+offset_top = 100.0
+offset_right = 500.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 36
+text = "Current Bet: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UI" type="VBoxContainer" parent="rouletteControl/CanvasLayer/CanvasLayer" unique_id=641424780]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -146.0
+offset_top = -172.0
+offset_right = 354.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="ResultLabel" type="Label" parent="rouletteControl/CanvasLayer/CanvasLayer/UI" unique_id=823482163]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Place your Bets!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinButton" type="Button" parent="rouletteControl/CanvasLayer/CanvasLayer/UI" unique_id=1077685721]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Spin"
+
+[node name="ExitButton" type="Button" parent="rouletteControl/CanvasLayer/CanvasLayer/UI" unique_id=600973299]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Exit"
+
+[node name="ChipContainer" type="HBoxContainer" parent="rouletteControl/CanvasLayer/CanvasLayer" unique_id=1401237193]
+offset_left = 5.0
+offset_top = 155.0
+offset_right = 2465.0
+offset_bottom = 767.0
+scale = Vector2(0.2, 0.2)
+
+[node name="chip10" type="TextureButton" parent="rouletteControl/CanvasLayer/CanvasLayer/ChipContainer" unique_id=1422504195]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("9_gi5vy")
+stretch_mode = 0
+
+[node name="chip50" type="TextureButton" parent="rouletteControl/CanvasLayer/CanvasLayer/ChipContainer" unique_id=938378572]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("9_icgd4")
+stretch_mode = 0
+
+[node name="chip100" type="TextureButton" parent="rouletteControl/CanvasLayer/CanvasLayer/ChipContainer" unique_id=118216735]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("11_tgspb")
+stretch_mode = 0
+
+[node name="chip500" type="TextureButton" parent="rouletteControl/CanvasLayer/CanvasLayer/ChipContainer" unique_id=536626683]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("12_705pj")
+stretch_mode = 0
+
+[connection signal="pressed" from="rouletteControl/CanvasLayer/CanvasLayer/UI/SpinButton" to="." method="_on_spin_button_pressed"]
+[connection signal="pressed" from="rouletteControl/CanvasLayer/CanvasLayer/UI/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="rouletteControl/CanvasLayer/CanvasLayer/ChipContainer/chip10" to="." method="_on_chip_10_pressed"]
+[connection signal="pressed" from="rouletteControl/CanvasLayer/CanvasLayer/ChipContainer/chip50" to="." method="_on_chip_50_pressed"]
+[connection signal="pressed" from="rouletteControl/CanvasLayer/CanvasLayer/ChipContainer/chip100" to="." method="_on_chip_100_pressed"]
+[connection signal="pressed" from="rouletteControl/CanvasLayer/CanvasLayer/ChipContainer/chip500" to="." method="_on_chip_500_pressed"]

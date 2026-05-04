@@ -241,11 +241,11 @@ transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1962894978]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_j35sf")
-move_speed = 400.0
+move_speed = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=241470122]
 position = Vector2(0.6666667, 7.3333335)
-scale = Vector2(2.5, 2.5)
+scale = Vector2(3, 3)
 texture = ExtResource("1_102sn")
 hframes = 24
 vframes = 7

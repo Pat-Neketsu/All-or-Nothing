@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://dan62efdw4b86"]
+
+[ext_resource type="Script" uid="uid://b8deq4cm7kbid" path="res://Scene/Level/look_out.gd" id="1_43t0v"]
+[ext_resource type="Texture2D" uid="uid://cygnbgxagcna0" path="res://Art/Background/FlyBackground.png" id="1_wwmsc"]
+[ext_resource type="Texture2D" uid="uid://cmn6pl5tef76g" path="res://Art/Chips/ChipBlank.png" id="2_43t0v"]
+[ext_resource type="Script" uid="uid://bwl3gx3r6ws8n" path="res://Scene/points_label.gd" id="3_o50jf"]
+[ext_resource type="Texture2D" uid="uid://cm2p4bto877ip" path="res://Art/RiseOrCrash/Plane.png" id="5_o50jf"]
+[ext_resource type="Script" uid="uid://4poeam2snqhv" path="res://Scene/Level/plane.gd" id="5_qkhpb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkhpb"]
+radius = 9.98703
+height = 159.92
+
+[node name="LookOut" type="Node2D" unique_id=1810335972]
+script = ExtResource("1_43t0v")
+
+[node name="Plane" type="CharacterBody2D" parent="." unique_id=1059154684]
+unique_name_in_owner = true
+position = Vector2(165, 350)
+script = ExtResource("5_qkhpb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plane" unique_id=155938632]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_o50jf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plane" unique_id=581612886]
+position = Vector2(5, 12)
+rotation = 1.5771888
+shape = SubResource("CapsuleShape2D_qkhpb")
+
+[node name="BuildingSpawner" type="Node2D" parent="." unique_id=838046371]
+unique_name_in_owner = true
+
+[node name="Buildings" type="Node2D" parent="." unique_id=1957519898]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=195663800]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=113571279]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wwmsc")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PointsBackground" type="TextureRect" parent="CanvasLayer" unique_id=334645011]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 250.0
+grow_horizontal = 0
+texture = ExtResource("2_43t0v")
+expand_mode = 1
+
+[node name="PointsLabel" type="Label" parent="CanvasLayer" unique_id=13939000]
+z_index = 10
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -186.0
+offset_top = 72.0
+offset_right = -40.0
+offset_bottom = 141.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+script = ExtResource("3_o50jf")
+
+[node name="UI" type="VBoxContainer" parent="CanvasLayer" unique_id=1373162676]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -81.0
+offset_right = 250.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI" unique_id=836245609]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "LookOut"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/UI" unique_id=1712430562]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="BetInput" type="LineEdit" parent="CanvasLayer/UI" unique_id=443316842]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Place Your Bet"
+alignment = 1
+
+[node name="ResultLabel" type="Label" parent="CanvasLayer/UI" unique_id=418079697]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Result Here"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/UI" unique_id=2129317596]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="Multiplier" type="Label" parent="CanvasLayer" unique_id=1999613833]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 24.0
+offset_right = 119.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Multiplier : 0.0x"
+
+[connection signal="pressed" from="CanvasLayer/UI/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ExitButton" to="." method="_on_exit_button_pressed"]

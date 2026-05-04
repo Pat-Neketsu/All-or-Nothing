@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c4baqpalhhn5q"]
+
+[ext_resource type="Script" uid="uid://chtiwn1mmr0dy" path="res://Scene/UI/building.gd" id="1_iqj3j"]
+[ext_resource type="Texture2D" uid="uid://dx3lpyec6uc1d" path="res://Art/RiseOrCrash/Tower.png" id="1_seven"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c4uj"]
+size = Vector2(58, 682.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d46v1"]
+radius = 29.0
+height = 242.0
+
+[node name="Building" type="Node2D" unique_id=1811258906]
+script = ExtResource("1_iqj3j")
+
+[node name="Top" type="Area2D" parent="." unique_id=185704565]
+
+[node name="TopSprite" type="Sprite2D" parent="Top" unique_id=2099814433]
+position = Vector2(1, -420)
+rotation = 3.1415925
+scale = Vector2(0.315, 0.75)
+texture = ExtResource("1_seven")
+
+[node name="TopCollision" type="CollisionShape2D" parent="Top" unique_id=902566984]
+position = Vector2(0, -490)
+shape = SubResource("RectangleShape2D_3c4uj")
+
+[node name="Bottom" type="Area2D" parent="." unique_id=60299695]
+
+[node name="BottomSprite" type="Sprite2D" parent="Bottom" unique_id=884494077]
+position = Vector2(0, 420)
+scale = Vector2(0.315, 0.75)
+texture = ExtResource("1_seven")
+
+[node name="BottomCollision" type="CollisionShape2D" parent="Bottom" unique_id=1493886604]
+position = Vector2(0, 490)
+shape = SubResource("RectangleShape2D_3c4uj")
+
+[node name="ScoreZone" type="Area2D" parent="." unique_id=1928645111]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone" unique_id=1928674170]
+shape = SubResource("CapsuleShape2D_d46v1")
