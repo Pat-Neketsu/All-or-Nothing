@@ -14,8 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="8_sjufo"]
 [ext_resource type="Script" uid="uid://ce8knxbp1p408" path="res://Scene/roc_machine.gd" id="9_3vhtb"]
 [ext_resource type="Texture2D" uid="uid://dusjf6gbrmbbu" path="res://Art/icon/joystick.png" id="9_hwnxv"]
+[ext_resource type="Script" uid="uid://bxas6wocm2ujm" path="res://Scene/look_out_machine.gd" id="10_hrc1s"]
 [ext_resource type="Texture2D" uid="uid://cbjwoujeki2d4" path="res://Art/icon/card.png" id="12_oh33i"]
 [ext_resource type="Texture2D" uid="uid://y6cw1q7y3n11" path="res://Art/icon/chip.png" id="15_3vhtb"]
+[ext_resource type="Texture2D" uid="uid://cvpl6hgh1rwh0" path="res://Art/icon/plane.png" id="18_12ck1"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_j8nsd"]
 tile_data = PackedInt32Array(0, 131072, 1, 65536, 131072, 5, 1, 196608, 1, 65537, 196608, 5, 2, 262144, 1, 65538, 262144, 5)
@@ -2641,7 +2643,7 @@ height = 221.59998
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ragut"]
 radius = 43.19998
-height = 211.19994
+height = 358.39984
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k3yqh"]
 radius = 89.600006
@@ -2650,6 +2652,10 @@ height = 309.615
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r0k76"]
 radius = 121.868286
 height = 784.02783
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ytce3"]
+radius = 110.0
+height = 610.0
 
 [node name="Casino" type="Node2D" unique_id=684717466]
 y_sort_enabled = true
@@ -2730,7 +2736,7 @@ position = Vector2(-750, 283.19998)
 shape = SubResource("CapsuleShape2D_hwnxv")
 
 [node name="DiceGameMachine" type="Area2D" parent="World/TriggerAreas" unique_id=1648524272]
-position = Vector2(776.00006, -567)
+position = Vector2(2190.0002, -1597.0001)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("3_56o7o")
 
@@ -2765,6 +2771,13 @@ script = ExtResource("9_3vhtb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/TriggerAreas/ROCMachine" unique_id=1909744249]
 shape = SubResource("CapsuleShape2D_r0k76")
+
+[node name="LookOutMachine" type="Area2D" parent="World/TriggerAreas" unique_id=926288458]
+position = Vector2(768, -523)
+script = ExtResource("10_hrc1s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TriggerAreas/LookOutMachine" unique_id=1756841152]
+shape = SubResource("CapsuleShape2D_ytce3")
 
 [node name="Control" type="Control" parent="." unique_id=601061231]
 layout_mode = 3
@@ -2822,13 +2835,14 @@ action_down = "move_down"
 unique_name_in_owner = true
 z_index = 15
 layout_mode = 0
-offset_left = 642.0
-offset_top = -561.0
-offset_right = 902.0
-offset_bottom = -493.0
-theme_override_font_sizes/font_size = 27
+offset_left = 2018.0
+offset_top = -1534.0
+offset_right = 2348.0
+offset_bottom = -1434.0
+theme_override_font_sizes/font_size = 35
 theme_override_icons/icon = ExtResource("7_hwnxv")
 text = "Play Dice Game "
+icon = ExtResource("7_hwnxv")
 
 [node name="SlotMachineButton" type="Button" parent="Control" unique_id=439258417]
 unique_name_in_owner = true
@@ -2895,6 +2909,19 @@ theme_override_icons/icon = ExtResource("7_hwnxv")
 text = "Play Rise or Crash"
 icon = ExtResource("9_hwnxv")
 
+[node name="LookOutButton" type="Button" parent="Control" unique_id=1514302745]
+unique_name_in_owner = true
+z_index = 15
+layout_mode = 0
+offset_left = 600.0
+offset_top = -575.0
+offset_right = 930.0
+offset_bottom = -475.0
+theme_override_font_sizes/font_size = 35
+theme_override_icons/icon = ExtResource("7_hwnxv")
+text = "Play Look Out"
+icon = ExtResource("18_12ck1")
+
 [connection signal="body_entered" from="World/TriggerAreas/BlackJackTable" to="World/TriggerAreas/BlackJackTable" method="_on_body_entered"]
 [connection signal="body_exited" from="World/TriggerAreas/BlackJackTable" to="World/TriggerAreas/BlackJackTable" method="_on_body_exited"]
 [connection signal="body_entered" from="World/TriggerAreas/SlotMachine" to="World/TriggerAreas/SlotMachine" method="_on_body_entered"]
@@ -2907,3 +2934,5 @@ icon = ExtResource("9_hwnxv")
 [connection signal="body_exited" from="World/TriggerAreas/RouletteTable" to="World/TriggerAreas/RouletteTable" method="_on_body_exited"]
 [connection signal="body_entered" from="World/TriggerAreas/ROCMachine" to="World/TriggerAreas/ROCMachine" method="_on_body_entered"]
 [connection signal="body_exited" from="World/TriggerAreas/ROCMachine" to="World/TriggerAreas/ROCMachine" method="_on_body_exited"]
+[connection signal="body_entered" from="World/TriggerAreas/LookOutMachine" to="World/TriggerAreas/LookOutMachine" method="_on_body_entered"]
+[connection signal="body_exited" from="World/TriggerAreas/LookOutMachine" to="World/TriggerAreas/LookOutMachine" method="_on_body_exited"]

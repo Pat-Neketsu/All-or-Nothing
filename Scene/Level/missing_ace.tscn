@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://cdrmbeseagtc6"]
+
+[ext_resource type="Texture2D" uid="uid://hvxwbhe3lyrp" path="res://Art/Background/MissingAceBackground.png" id="1_7vfti"]
+[ext_resource type="Script" uid="uid://cotwg134ydkdm" path="res://Scene/Level/missing_ace.gd" id="1_lhulx"]
+[ext_resource type="Texture2D" uid="uid://cmn6pl5tef76g" path="res://Art/Chips/ChipBlank.png" id="2_lhulx"]
+[ext_resource type="Script" uid="uid://bwl3gx3r6ws8n" path="res://Scene/points_label.gd" id="3_3gx0y"]
+[ext_resource type="Texture2D" uid="uid://y6cw1q7y3n11" path="res://Art/icon/chip.png" id="4_6fblm"]
+[ext_resource type="Texture2D" uid="uid://dbwpargmwwcbt" path="res://Art/icon/play.png" id="5_wpubx"]
+[ext_resource type="Texture2D" uid="uid://qs5s87e0a2c3" path="res://Art/icon/close.png" id="6_3c7yk"]
+
+[node name="MissingAce" type="Node2D" unique_id=633759597]
+script = ExtResource("1_lhulx")
+
+[node name="Control" type="Control" parent="." unique_id=30783538]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UI" type="CanvasLayer" parent="Control" unique_id=1029927867]
+
+[node name="Background" type="TextureRect" parent="Control/UI" unique_id=471664668]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7vfti")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PointsBackground" type="TextureRect" parent="Control/UI" unique_id=72062949]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 250.0
+grow_horizontal = 0
+texture = ExtResource("2_lhulx")
+expand_mode = 1
+
+[node name="PointsLabel" type="Label" parent="Control/UI" unique_id=42008914]
+z_index = 10
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -186.0
+offset_top = 72.0
+offset_right = -40.0
+offset_bottom = 141.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+script = ExtResource("3_3gx0y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/UI" unique_id=147605413]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -560.0
+offset_top = -420.0
+offset_right = -40.0
+offset_bottom = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="BetInput" type="LineEdit" parent="Control/UI/VBoxContainer" unique_id=1563149913]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Place Your Bet"
+alignment = 1
+right_icon = ExtResource("4_6fblm")
+
+[node name="StartButton" type="Button" parent="Control/UI/VBoxContainer" unique_id=192915073]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Start"
+icon = ExtResource("5_wpubx")
+
+[node name="CashoutButton" type="Button" parent="Control/UI/VBoxContainer" unique_id=1044294997]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+disabled = true
+text = "Cashout"
+icon = ExtResource("4_6fblm")
+
+[node name="ResultLabel" type="Label" parent="Control/UI/VBoxContainer" unique_id=100690313]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Place Your Bet To Start"
+horizontal_alignment = 1
+
+[node name="MultiplierLabel" type="Label" parent="Control/UI/VBoxContainer" unique_id=383324395]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Multiplier: 0.0x"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="Button" parent="Control/UI/VBoxContainer" unique_id=1342346110]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+icon = ExtResource("6_3c7yk")
+
+[node name="CardArea" type="Node2D" parent="Control/UI" unique_id=706549724]
+unique_name_in_owner = true
+z_index = 1
+
+[connection signal="pressed" from="Control/UI/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/UI/VBoxContainer/CashoutButton" to="." method="_on_cashout_button_pressed"]
+[connection signal="pressed" from="Control/UI/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

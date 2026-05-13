@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c7tobwxxa2hf4"]
+
+[ext_resource type="Texture2D" uid="uid://cymk1bl4yp6v7" path="res://Art/cards/back.jpg" id="1_2hfdh"]
+[ext_resource type="Script" uid="uid://dc0rr15u1w128" path="res://Scene/UI/card_2.gd" id="1_uhbau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhbau"]
+size = Vector2(166, 242)
+
+[node name="Card2" type="Area2D" unique_id=1464510655]
+scale = Vector2(1.3, 1.3)
+script = ExtResource("1_uhbau")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=199887178]
+unique_name_in_owner = true
+texture = ExtResource("1_2hfdh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1654750549]
+shape = SubResource("RectangleShape2D_uhbau")

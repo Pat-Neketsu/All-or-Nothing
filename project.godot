@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="All or Nothing"
-run/main_scene="uid://dan62efdw4b86"
+run/main_scene="uid://cdrmbeseagtc6"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
