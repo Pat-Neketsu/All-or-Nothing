@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="All or Nothing"
-run/main_scene="uid://cdrmbeseagtc6"
+run/main_scene="uid://di1yec14pbl4b"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://byote0hsvmfhl"
 
 [autoload]
 

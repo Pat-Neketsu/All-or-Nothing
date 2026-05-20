@@ -193,7 +193,7 @@ func update_ui():
 		multiplier_label,
 		"text",
 		"Multiplier : " + str(snapped(current_multiplier, 0.01)) + "x",
-		0.1
+		0.2
 	)
 	
 	start_button.disabled = playing

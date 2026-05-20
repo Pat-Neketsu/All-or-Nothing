@@ -36,7 +36,7 @@ var playing = false
 var building_cleared = 0
 var current_multiplier = 0.1
 
-const MAX_MULTIPLIER = 30.0
+const MAX_MULTIPLIER = 20.0
 
 func _ready() -> void:
 	original_position = position
@@ -89,7 +89,7 @@ func on_pipe_passed():
 	
 	building_cleared += 1
 	
-	current_multiplier = min( 0.1 * (building_cleared + 1), MAX_MULTIPLIER)
+	current_multiplier = min( 0.05 * (building_cleared + 1), MAX_MULTIPLIER)
 	
 	update_difficulty()
 	update_ui()
@@ -179,9 +179,9 @@ func update_difficulty():
 		spawn_delay = max(0.9, 1.5 - (t - 10) * 0.05)
 		
 	else:
-		gap_size = max(80, 120 - (t - 25) * 2)
-		scroll_speed = min(500, 320 + (t - 25) * 10)
-		spawn_delay = max(0.7, 0.9 - (t - 25) * 0.02)
+		gap_size = max(40, 100 - (t - 25) * 2)
+		scroll_speed = min(700, 320 + (t - 25) * 12)
+		spawn_delay = max(0.2, 0.9 - (t - 25) * 0.02)
 
 func _on_pipe_hit(body):
 	if body.is_in_group("player"):
@@ -189,7 +189,13 @@ func _on_pipe_hit(body):
 
 func update_ui():
 	
-	multiplier_label.text = "Multiplier : " + str(snapped(current_multiplier, 0.01)) + "x"	
+	var tween = create_tween()
+	tween.tween_property(
+		multiplier_label,
+		"text",
+		"Multiplier : " + str(snapped(current_multiplier, 0.01)) + "x",
+		0.2
+	)
 
 
 func _on_start_button_pressed() -> void:

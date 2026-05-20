@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://di1yec14pbl4b"]
 
+[ext_resource type="Script" uid="uid://t5v1gac78358" path="res://Scene/casino.gd" id="1_eympr"]
 [ext_resource type="PackedScene" uid="uid://coa133888fv5q" path="res://Scene/Character/bob.tscn" id="1_i6xay"]
 [ext_resource type="Texture2D" uid="uid://c6emx7vnpgmgh" path="res://Art/Charater/Characters_MV.png" id="2_sjufo"]
 [ext_resource type="Script" uid="uid://sqquusgueiwp" path="res://Scene/dice_game_machine.gd" id="3_56o7o"]
@@ -15,9 +16,17 @@
 [ext_resource type="Script" uid="uid://ce8knxbp1p408" path="res://Scene/roc_machine.gd" id="9_3vhtb"]
 [ext_resource type="Texture2D" uid="uid://dusjf6gbrmbbu" path="res://Art/icon/joystick.png" id="9_hwnxv"]
 [ext_resource type="Script" uid="uid://bxas6wocm2ujm" path="res://Scene/look_out_machine.gd" id="10_hrc1s"]
+[ext_resource type="Script" uid="uid://c4g78dkd763lb" path="res://Scene/missing_ace_machine.gd" id="11_12ck1"]
 [ext_resource type="Texture2D" uid="uid://cbjwoujeki2d4" path="res://Art/icon/card.png" id="12_oh33i"]
+[ext_resource type="Script" uid="uid://wbkux0twr6d7" path="res://Scene/slot_machine_2.gd" id="12_ytce3"]
+[ext_resource type="Script" uid="uid://c6tcx8eivghxh" path="res://Scene/roc_machine_2.gd" id="13_xqbi0"]
+[ext_resource type="Script" uid="uid://dth74ojkn78jr" path="res://Scene/missing_ace_machine_2.gd" id="14_h04u3"]
 [ext_resource type="Texture2D" uid="uid://y6cw1q7y3n11" path="res://Art/icon/chip.png" id="15_3vhtb"]
+[ext_resource type="Script" uid="uid://bun5sbwp6buq2" path="res://Scene/quick_gamble.gd" id="15_h04u3"]
 [ext_resource type="Texture2D" uid="uid://cvpl6hgh1rwh0" path="res://Art/icon/plane.png" id="18_12ck1"]
+[ext_resource type="Texture2D" uid="uid://detfiibt0uvrt" path="res://Art/icon/settings.png" id="20_dvj8x"]
+[ext_resource type="Texture2D" uid="uid://7r6bcfmndi1l" path="res://Art/Chips/head.png" id="24_o3cxc"]
+[ext_resource type="AudioStream" uid="uid://hg61s2frx0i8" path="res://Audio/Adoビバリウム.mp3" id="27_dvj8x"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_j8nsd"]
 tile_data = PackedInt32Array(0, 131072, 1, 65536, 131072, 5, 1, 196608, 1, 65537, 196608, 5, 2, 262144, 1, 65538, 262144, 5)
@@ -2646,7 +2655,7 @@ radius = 43.19998
 height = 358.39984
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k3yqh"]
-radius = 89.600006
+radius = 77.61014
 height = 309.615
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r0k76"]
@@ -2657,8 +2666,29 @@ height = 784.02783
 radius = 110.0
 height = 610.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ravt"]
+radius = 121.99927
+height = 843.99097
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xqbi0"]
+radius = 50.411926
+height = 184.84827
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h04u3"]
+radius = 122.0
+height = 495.81128
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3cxc"]
+radius = 119.0
+height = 422.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nshwn"]
+radius = 204.0
+height = 658.0
+
 [node name="Casino" type="Node2D" unique_id=684717466]
 y_sort_enabled = true
+script = ExtResource("1_eympr")
 
 [node name="World" type="Node2D" parent="." unique_id=329797428]
 
@@ -2779,6 +2809,49 @@ script = ExtResource("10_hrc1s")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/TriggerAreas/LookOutMachine" unique_id=1756841152]
 shape = SubResource("CapsuleShape2D_ytce3")
 
+[node name="MissingAceMachine" type="Area2D" parent="World/TriggerAreas" unique_id=172170180]
+position = Vector2(486, -1887)
+script = ExtResource("11_12ck1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TriggerAreas/MissingAceMachine" unique_id=1944851021]
+rotation = 1.571171
+shape = SubResource("CapsuleShape2D_4ravt")
+
+[node name="SlotMachine2" type="Area2D" parent="World/TriggerAreas" unique_id=643538721]
+position = Vector2(1894.0001, -1894.9999)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("12_ytce3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TriggerAreas/SlotMachine2" unique_id=1385205420]
+rotation = 1.5621957
+shape = SubResource("CapsuleShape2D_xqbi0")
+
+[node name="ROCMachine2" type="Area2D" parent="World/TriggerAreas" unique_id=447276831]
+position = Vector2(1464, -1101)
+rotation = -0.016474772
+script = ExtResource("13_xqbi0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TriggerAreas/ROCMachine2" unique_id=1829449381]
+rotation = 1.5787239
+shape = SubResource("CapsuleShape2D_h04u3")
+
+[node name="MissingAceMachine2" type="Area2D" parent="World/TriggerAreas" unique_id=277649134]
+position = Vector2(1960, -1110)
+script = ExtResource("14_h04u3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TriggerAreas/MissingAceMachine2" unique_id=686373976]
+position = Vector2(-32, 5)
+rotation = 1.576144
+shape = SubResource("CapsuleShape2D_o3cxc")
+
+[node name="QuickGamble" type="Area2D" parent="World/TriggerAreas" unique_id=1667997730]
+position = Vector2(418, -499)
+script = ExtResource("15_h04u3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TriggerAreas/QuickGamble" unique_id=282278323]
+position = Vector2(11, -10)
+shape = SubResource("CapsuleShape2D_nshwn")
+
 [node name="Control" type="Control" parent="." unique_id=601061231]
 layout_mode = 3
 anchors_preset = 15
@@ -2788,6 +2861,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="UI" type="CanvasLayer" parent="Control" unique_id=1070601963]
+unique_name_in_owner = true
 
 [node name="PointsBackground" type="TextureRect" parent="Control/UI" unique_id=1341328238]
 anchors_preset = 1
@@ -2830,6 +2904,14 @@ action_left = "move_left"
 action_right = "move_right"
 action_up = "move_up"
 action_down = "move_down"
+
+[node name="Settings" type="Button" parent="Control/UI" unique_id=1961504162]
+offset_left = 49.0
+offset_top = 33.0
+offset_right = 92.0
+offset_bottom = 76.0
+scale = Vector2(2, 2)
+icon = ExtResource("20_dvj8x")
 
 [node name="DiceGameButton" type="Button" parent="Control" unique_id=2069024411]
 unique_name_in_owner = true
@@ -2914,13 +2996,100 @@ unique_name_in_owner = true
 z_index = 15
 layout_mode = 0
 offset_left = 600.0
-offset_top = -575.0
+offset_top = -619.0
 offset_right = 930.0
-offset_bottom = -475.0
+offset_bottom = -519.0
 theme_override_font_sizes/font_size = 35
 theme_override_icons/icon = ExtResource("7_hwnxv")
 text = "Play Look Out"
 icon = ExtResource("18_12ck1")
+
+[node name="MissingAceButton" type="Button" parent="Control" unique_id=1310799015]
+unique_name_in_owner = true
+z_index = 15
+layout_mode = 0
+offset_left = 334.0
+offset_top = -1851.0
+offset_right = 626.0
+offset_bottom = -1766.0
+theme_override_font_sizes/font_size = 27
+theme_override_icons/icon = ExtResource("7_hwnxv")
+text = "Play Missing Ace"
+icon = ExtResource("12_oh33i")
+
+[node name="SlotMachineButton2" type="Button" parent="Control" unique_id=596632109]
+unique_name_in_owner = true
+z_index = 15
+layout_mode = 0
+offset_left = 1770.0
+offset_top = -1823.0
+offset_right = 2030.0
+offset_bottom = -1755.0
+theme_override_font_sizes/font_size = 27
+theme_override_icons/icon = ExtResource("7_hwnxv")
+text = "Play Slots"
+icon = ExtResource("9_hwnxv")
+
+[node name="ROCButton2" type="Button" parent="Control" unique_id=1581379371]
+unique_name_in_owner = true
+z_index = 15
+layout_mode = 0
+offset_left = 1304.0
+offset_top = -1181.0
+offset_right = 1637.0
+offset_bottom = -1076.0
+theme_override_font_sizes/font_size = 27
+theme_override_icons/icon = ExtResource("7_hwnxv")
+text = "Play Rise or Crash"
+icon = ExtResource("9_hwnxv")
+
+[node name="MissingAceButton2" type="Button" parent="Control" unique_id=320520190]
+unique_name_in_owner = true
+z_index = 15
+layout_mode = 0
+offset_left = 1779.0
+offset_top = -1166.0
+offset_right = 2071.0
+offset_bottom = -1081.0
+theme_override_font_sizes/font_size = 27
+theme_override_icons/icon = ExtResource("7_hwnxv")
+text = "Play Missing Ace"
+icon = ExtResource("12_oh33i")
+
+[node name="QuickGambleButton" type="Button" parent="Control" unique_id=712524207]
+unique_name_in_owner = true
+z_index = 15
+layout_mode = 0
+offset_left = 271.0
+offset_top = -445.0
+offset_right = 585.0
+offset_bottom = -362.0
+theme_override_font_sizes/font_size = 35
+theme_override_icons/icon = ExtResource("7_hwnxv")
+text = "Quick Gamble"
+icon = ExtResource("15_3vhtb")
+
+[node name="QuickGambleLabel" type="Label" parent="Control" unique_id=1895840988]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 202.0
+offset_top = -501.0
+offset_right = 661.0
+offset_bottom = -432.0
+theme_override_font_sizes/font_size = 40
+text = "20 Chips For Heads"
+horizontal_alignment = 1
+
+[node name="Coin" type="Sprite2D" parent="Control" unique_id=818387701]
+unique_name_in_owner = true
+position = Vector2(432, -591)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_o3cxc")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1572115470]
+stream = ExtResource("27_dvj8x")
+autoplay = true
+bus = &"SFX"
 
 [connection signal="body_entered" from="World/TriggerAreas/BlackJackTable" to="World/TriggerAreas/BlackJackTable" method="_on_body_entered"]
 [connection signal="body_exited" from="World/TriggerAreas/BlackJackTable" to="World/TriggerAreas/BlackJackTable" method="_on_body_exited"]
@@ -2936,3 +3105,14 @@ icon = ExtResource("18_12ck1")
 [connection signal="body_exited" from="World/TriggerAreas/ROCMachine" to="World/TriggerAreas/ROCMachine" method="_on_body_exited"]
 [connection signal="body_entered" from="World/TriggerAreas/LookOutMachine" to="World/TriggerAreas/LookOutMachine" method="_on_body_entered"]
 [connection signal="body_exited" from="World/TriggerAreas/LookOutMachine" to="World/TriggerAreas/LookOutMachine" method="_on_body_exited"]
+[connection signal="body_entered" from="World/TriggerAreas/MissingAceMachine" to="World/TriggerAreas/MissingAceMachine" method="_on_body_entered"]
+[connection signal="body_exited" from="World/TriggerAreas/MissingAceMachine" to="World/TriggerAreas/MissingAceMachine" method="_on_body_exited"]
+[connection signal="body_entered" from="World/TriggerAreas/SlotMachine2" to="World/TriggerAreas/SlotMachine2" method="_on_body_entered"]
+[connection signal="body_exited" from="World/TriggerAreas/SlotMachine2" to="World/TriggerAreas/SlotMachine2" method="_on_body_exited"]
+[connection signal="body_entered" from="World/TriggerAreas/ROCMachine2" to="World/TriggerAreas/ROCMachine2" method="_on_body_entered"]
+[connection signal="body_exited" from="World/TriggerAreas/ROCMachine2" to="World/TriggerAreas/ROCMachine2" method="_on_body_exited"]
+[connection signal="body_entered" from="World/TriggerAreas/MissingAceMachine2" to="World/TriggerAreas/MissingAceMachine2" method="_on_body_entered"]
+[connection signal="body_exited" from="World/TriggerAreas/MissingAceMachine2" to="World/TriggerAreas/MissingAceMachine2" method="_on_body_exited"]
+[connection signal="body_entered" from="World/TriggerAreas/QuickGamble" to="World/TriggerAreas/QuickGamble" method="_on_body_entered"]
+[connection signal="body_exited" from="World/TriggerAreas/QuickGamble" to="World/TriggerAreas/QuickGamble" method="_on_body_exited"]
+[connection signal="pressed" from="Control/UI/Settings" to="." method="_on_settings_pressed"]

@@ -290,7 +290,13 @@ func update_ui():
 	if current_multiplier <= 1.0:
 		multiplier_label.text = "Multiplier: --"
 	else:
-		multiplier_label.text = "Multiplier: " + str(current_multiplier) + "x"
+		var tween = create_tween()
+		tween.tween_property(
+		multiplier_label,
+		"text",
+		"Multiplier : " + str(snapped(current_multiplier, 0.01)) + "x",
+		0.3
+	)
 
 func assign_cards():
 	var ace_index = randi_range(0, cards.size() - 1)
